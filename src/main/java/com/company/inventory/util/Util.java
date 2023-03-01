@@ -6,6 +6,8 @@ import java.util.zip.DataFormatException;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
+
+
 public class Util {
 
 	// compress the image bytes before storing it in the database
@@ -35,7 +37,7 @@ public class Util {
 			inflater.setInput(data);
 			ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
 			byte[] buffer = new byte[1024];
-			try {
+			try {	
 				while (!inflater.finished()) {
 					int count = inflater.inflate(buffer);
 					outputStream.write(buffer, 0, count);
@@ -43,6 +45,8 @@ public class Util {
 				outputStream.close();
 			} catch (IOException ioe) {
 			} catch (DataFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			return outputStream.toByteArray();
 		}
